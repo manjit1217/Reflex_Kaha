@@ -1,0 +1,6 @@
+PageObject_Component\PageObject_setupprofile.class
+Generic_Component\Screenshoot_Class.class
+Generic_Component\Utility_Class.class
+PageObject_Component\PageObject_OTP.class
+PageObject_Component\PageObject_phonenumber.class
+Generic_Component\Base_class.class
