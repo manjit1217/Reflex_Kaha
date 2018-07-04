@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="Scenario_Component.Scenario_Phonenumber">
+        <methods>
+          <include name="uninstall"/>
+          <include name="Phoneno_Toast_Messages"/>
+          <include name="initapp"/>
+          <include name="Phoneno_UI"/>
+          <include name="start"/>
+        </methods>
+      </class> <!-- Scenario_Component.Scenario_Phonenumber -->
+      <class name="Scenario_Component.Scenario_OTP">
+        <methods>
+          <include name="Verify_OTP_UI"/>
+          <include name="Verify_Band_cnnected"/>
+          <include name="Verify_Band_listscreen"/>
+          <include name="blank_OTP"/>
+        </methods>
+      </class> <!-- Scenario_Component.Scenario_OTP -->
+      <class name="Scenario_Component.Scenario_setupprofile">
+        <methods>
+          <include name="verifyname"/>
+          <include name="verifyemail"/>
+          <include name="camera_UI"/>
+          <include name="verifyhight"/>
+          <include name="signup_success_last"/>
+          <include name="input_setup_profile"/>
+          <include name="profile_UI"/>
+        </methods>
+      </class> <!-- Scenario_Component.Scenario_setupprofile -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
