@@ -6,6 +6,6 @@
       <class name="Scenario_Component.Scenario_Phonenumber"/>
       <class name="Scenario_Component.Scenario_OTP"/>
        <class name="Scenario_Component.Scenario_setupprofile"/>
-    </classes>
+           </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

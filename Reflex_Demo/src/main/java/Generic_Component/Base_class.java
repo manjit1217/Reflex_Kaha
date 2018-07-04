@@ -24,6 +24,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.FindsByAndroidUIAutomator;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -45,7 +46,9 @@ public class Base_class {
 	static DesiredCapabilities capabilities;
 	public AppiumDriverLocalService service;
 	public AppiumServiceBuilder builder;
-	public AndroidDriver driver;
+	public static AndroidDriver driver;
+	
+
 	
 	public void startServer() {
 		//Set Capabilities
@@ -64,6 +67,7 @@ public class Base_class {
 		service = AppiumDriverLocalService.buildService(builder);
 		service.start();
 		System.out.println("Server Started");
+		
 	}
 	
 	public static void InitApp() throws MalformedURLException, InterruptedException
@@ -81,6 +85,25 @@ public class Base_class {
 		Thread.sleep(5000);
 		System.out.println("Install Successfully");
 	}
+	
+	public static void specificscreen() throws MalformedURLException, InterruptedException {
+		
+		URL remote_grid = new URL("http://127.0.0.1:4727/wd/hub");
+		
+		//DesiredCapabilities caps = new DesiredCapabilities();
+		capabilities.setCapability("platformName","Android");
+		capabilities.setCapability("deviceName","FA7A51A01792");
+		capabilities.setCapability("platformVersion", "6.0");
+		capabilities.setCapability("appPackage", "com.isport.fastrack");
+		//capabilities.setCapability("appActivity", "com.isport.fastrack.views.acitvities.HomeActivity");
+		capabilities.setCapability("appActivity", "clovewearable.commons.phonevalid.ui.PhoneValidationActivity");
+		capabilities.setCapability("noReset", "true");
+		androidDriver = new AndroidDriver<MobileElement>(remote_grid, capabilities);    
+		androidDriver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+		System.out.println("called");
+			
+	}
+	
 	
 	public static void relunch()
 	{
@@ -159,7 +182,12 @@ public class Base_class {
 		touchAction.longPress(fromX, fromY).moveTo(toX, toY).release().perform();
 		}
 	
-	 
+	 public void touch_action(int xPoint,int yPoint)
+	 {
+		 
+		 TouchAction touchAction=new TouchAction(androidDriver);
+			touchAction.tap(xPoint, yPoint).perform();
+	 }
 	 public AppiumDriver<MobileElement> getDriver()
 	    {
 

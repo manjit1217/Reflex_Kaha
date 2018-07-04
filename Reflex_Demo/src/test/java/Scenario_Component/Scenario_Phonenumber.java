@@ -2,6 +2,7 @@ package Scenario_Component;
 
 import static org.testng.Assert.assertTrue;
 
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 
@@ -15,8 +16,10 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import Generic_Component.Base_class;
+import Generic_Component.Log4j;
 import Generic_Component.Screenshoot_Class;
 import Generic_Component.Utility_Class;
 import PageObject_Component.PageObject_OTP;
@@ -26,32 +29,79 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import net.sourceforge.tess4j.TesseractException;
+import org.apache.log4j.Logger;
 
 
 public class Scenario_Phonenumber extends Base_class {
 
-	//public AppiumDriver driver;
-	//public static AppiumDriver<WebElement> driver;
+	private static PageObject_phonenumber obj_phoneno; 
+	/*private static PageObject_OTP obj_otp;
+	private static PageObject_setupprofile obj_setupprofile;
+*/	
+	//static Logger log= Logger.getLogger(Scenario_Phonenumber.class);
 	
+		
 	@BeforeSuite
 	void start()
 	{
 		startServer();
+		obj_phoneno = new PageObject_phonenumber(androidDriver) ;
+		Log4j.info("SERVER START--log");
+		//Log4j.info();
+		/*obj_otp=new PageObject_OTP(androidDriver);
+		obj_setupprofile=new PageObject_setupprofile(androidDriver);*/
 	}
 	@BeforeTest
 	void initapp() throws InterruptedException, IOException
-	{
+	{		
 		InitApp();
+		Log4j.info("Hellooo");
+		//specificscreen();
+		obj_phoneno = new PageObject_phonenumber(androidDriver) ;
 	}
+	
 	
 	@Test(priority=0)
-	public static void Permission()
+	public void Permission()
 	{
-		PageObject_phonenumber obj = new PageObject_phonenumber(androidDriver) ;
-		obj.permission_allow("allow");
+		Log4j.info("App Permission");
+		obj_phoneno.verify_permission_message();
+		obj_phoneno.permission_allow("allow");
+	}
+	@Test(priority=1,description="Testing Phone no screen UI")
+	public void Phoneno_UI()
+	{
+		//androidDriver.hideKeyboard();
+		obj_phoneno.check_phoneno_UI();
+	}
+	@Test(priority=2,description="Verifying All toast Messages")
+	public void Phoneno_Toast_Messages() throws TesseractException, InterruptedException
+	{		
+		obj_phoneno.verify_toastmessages();
+	}
+	@Test(priority=3,description="Verify the country field")
+	public void Verify_Country_UI()
+	{
+		obj_phoneno.verify_country_UI();
+	}
+	@Test(priority=4)
+	public void Verify_TermPDF()
+	{
+		obj_phoneno.TermPDF_check();
+	}
+	@Test(priority=5)
+	public void Moveto_OTP()
+	{
+		obj_phoneno.Moveto_OTP("7735912808");
+	}
+	@Test(priority=6)
+	public void No_Verify_screen()
+	{
+		obj_phoneno.confirm_no_screen("7735912808");
 	}
 	
-@Test(enabled=false)
+		
+/*@Test(enabled=false)
 	void countrylist()
 	{
 		PageObject_phonenumber.country_btn();
@@ -77,13 +127,7 @@ public class Scenario_Phonenumber extends Base_class {
 		
 	}
 	
-	@Test(priority=4)
-	void phone_valid_description()
-	{
-		String Actual=PageObject_phonenumber.phone_valid_description.getText();
-		System.out.println(Actual);
-		Assert.assertEquals("Register with your phone number",Actual);
-	}
+	
 	@Test(priority=5)
 	void termPDF()
 	{
@@ -111,16 +155,8 @@ public class Scenario_Phonenumber extends Base_class {
 		PageObject_phonenumber.phoneno_field(no);
 		PageObject_phonenumber.valid_submit_btn();
 		String s=Screenshoot_Class.readToastMessage();
-		//System.out.println(s);
 		assertTrue(s.contains("Phone number +91889263 appears to be" + 
 				"invalid. Please select a valid number"));
-		
-		
-		//Assert.assertEquals(Expected,PageObject_OTP.phone_verify_code.getText());
-		//Phone number +91889263 appears to be
-		//invalid. Please select a valid number
-		//Thread.sleep(15000);
-				
 	}
 	
 	@Test(priority=8)
@@ -128,34 +164,32 @@ public class Scenario_Phonenumber extends Base_class {
 	{
 		String no="88926377354";
 		PageObject_phonenumber.phoneno_field(no);
-		//androidDriver.hideKeyboard();
-		//PageObject_phonenumber.checkbox_term();
 		PageObject_phonenumber.valid_submit_btn();
 		String s=Screenshoot_Class.readToastMessage();
 		assertTrue(s.contains("Enter valid mobile number"));
 	}
-	
+*/	
 		
-	@Test(priority=9)
+	/*@Test(priority=9)
 	void move_OTP_correwctno() throws InterruptedException, TesseractException
 	{
 		PageObject_OTP obj = new PageObject_OTP(androidDriver);
 		String no="7735912808";
-		//PageObject_phonenumber.checkbox_term();
+		PageObject_phonenumber.checkbox_term();
 		PageObject_phonenumber.phoneno_field(no);
-		androidDriver.hideKeyboard();
+	//	androidDriver.hideKeyboard();
 		PageObject_phonenumber.valid_submit_btn();
 		//String message = PageObject_phonenumber.dialog_message_tv.getText();
 		//Assert.assertEquals("Mobile number entered is +91"+no+". Continue?",message);
 		System.out.println("yes");
-		PageObject_OTP.check_existing_profile();
+		PageObject_OTP.delete_existing_profile();
 		PageObject_phonenumber.dialog_yes_button();
 		System.out.println("clickek on yes");
 		Thread.sleep(15000);
 		//Thread.sleep(5000);
 	}
 
-	
+*/	
 	//Scenario_OTP
 	
 	/*@Test(priority=8)

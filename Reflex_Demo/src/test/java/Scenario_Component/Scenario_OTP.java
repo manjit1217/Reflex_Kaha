@@ -2,7 +2,11 @@ package Scenario_Component;
 
 import static org.testng.Assert.assertTrue;
 
+import java.io.IOException;
+
 import org.testng.Assert;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import Generic_Component.Base_class;
@@ -14,14 +18,69 @@ import net.sourceforge.tess4j.TesseractException;
 
 public class Scenario_OTP extends Base_class {
 	
+	//private static PageObject_OTP obj_OTP; 
 	
+	
+	/*@BeforeSuite
+	void start()
+	{
+		startServer();
+	}*/
+	
+	@Test(priority=7)
+	void Verify_OTP_UI()
+	{
+		PageObject_OTP obj_OTP=new PageObject_OTP(androidDriver);
+		explicitywait(obj_OTP.phone_verification_submit, 50);
+		obj_OTP.Verify_OTP_UI();
+	}
+	@Test(priority=8)
+	void blank_OTP() throws TesseractException
+	{
+		PageObject_OTP obj_OTP=new PageObject_OTP(androidDriver);
+
+		obj_OTP.BlankOTP();
+	}
+	@Test(priority=9)
+	void verify_retry() throws InterruptedException
+	{
+		PageObject_OTP obj_OTP=new PageObject_OTP(androidDriver);
+
+		obj_OTP.verify_retry_button_Success();
+	}
+	@Test(priority=10)
+	void band_turned_on_UI()
+	{
+		PageObject_OTP obj_OTP=new PageObject_OTP(androidDriver);
+
+		obj_OTP.band_turned_on_UI();
+		obj_OTP.ok_button.click();
+	}
+	@Test(priority=11)
+	void Verify_Band_listscreen()
+	{
+		PageObject_OTP obj_OTP=new PageObject_OTP(androidDriver);
+
+		obj_OTP.band_list_screen_UI();
+		obj_OTP.Band1.click();
+	}
+	@Test(priority=12)
+	void Verify_Band_cnnected()
+	{
+		PageObject_OTP obj_OTP=new PageObject_OTP(androidDriver);
+
+		obj_OTP.Band_pair_screen();
+	}
+	
+	
+	/*
 
 	@Test(priority=10)
 	void tollbar_Image()
 	{
 		
-		explicitywait(PageObject_OTP.phone_valid_tool_bar, 40);
-		if (PageObject_OTP.phone_valid_tool_bar.isDisplayed()){
+		explicitywait(PageObject_OTP.phone_valid_tool_bar_OTP, 40);
+		if (PageObject_OTP.phone_valid_tool_bar_OTP.isDisplayed()){
 		       System.out.println("Logo is displaying");
 		       Screenshoot_Class.takeScreenShot();
 		   }else{
@@ -170,7 +229,7 @@ public class Scenario_OTP extends Base_class {
 	
 	
 	
-	
+	*/
 	
 	
 }

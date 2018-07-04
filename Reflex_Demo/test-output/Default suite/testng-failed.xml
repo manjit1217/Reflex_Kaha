@@ -5,40 +5,11 @@
     <classes>
       <class name="Scenario_Component.Scenario_setupprofile">
         <methods>
-          <include name="verifyname"/>
-          <include name="verifyemail"/>
-          <include name="verifyhight"/>
-          <include name="signup_success_last"/>
+          <include name="initapp"/>
+          <include name="start"/>
+          <include name="profile_UI"/>
         </methods>
       </class> <!-- Scenario_Component.Scenario_setupprofile -->
-      <class name="Scenario_Component.Scenario_Phonenumber">
-        <methods>
-          <include name="uninstall"/>
-          <include name="move_OTP_correwctno"/>
-          <include name="accept_termandconitions"/>
-          <include name="phone_valid_description"/>
-          <include name="initapp"/>
-          <include name="phoneno_morethan10"/>
-          <include name="termPDF"/>
-          <include name="phoneno_lessthan10"/>
-          <include name="phoneno_Blank"/>
-          <include name="start"/>
-        </methods>
-      </class> <!-- Scenario_Component.Scenario_Phonenumber -->
-      <class name="Scenario_Component.Scenario_OTP">
-        <methods>
-          <include name="finallogin"/>
-          <include name="phone_verify_desc"/>
-          <include name="tollbar_Image"/>
-          <include name="enterOTP_COnnectband"/>
-          <include name="verify_phonetitle"/>
-          <include name="phone_verify_code"/>
-          <include name="setupprofile"/>
-          <include name="phone_verify_timer"/>
-          <include name="ResendOTP_Desc"/>
-          <include name="oldno_existingprofile"/>
-        </methods>
-      </class> <!-- Scenario_Component.Scenario_OTP -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
