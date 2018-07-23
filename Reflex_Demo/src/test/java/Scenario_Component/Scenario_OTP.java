@@ -27,21 +27,21 @@ public class Scenario_OTP extends Base_class {
 		startServer();
 	}*/
 	
-	@Test(priority=7)
+	/*@Test(priority=6)
 	void Verify_OTP_UI()
 	{
 		PageObject_OTP obj_OTP=new PageObject_OTP(androidDriver);
 		explicitywait(obj_OTP.phone_verification_submit, 50);
 		obj_OTP.Verify_OTP_UI();
 	}
-	@Test(priority=8)
+	@Test(priority=7)
 	void blank_OTP() throws TesseractException
 	{
 		PageObject_OTP obj_OTP=new PageObject_OTP(androidDriver);
 
 		obj_OTP.BlankOTP();
 	}
-	@Test(priority=9)
+	@Test(priority=8)
 	void verify_retry() throws InterruptedException
 	{
 		PageObject_OTP obj_OTP=new PageObject_OTP(androidDriver);
@@ -63,6 +63,7 @@ public class Scenario_OTP extends Base_class {
 
 		obj_OTP.band_list_screen_UI();
 		obj_OTP.Band1.click();
+		
 	}
 	@Test(priority=12)
 	void Verify_Band_cnnected()
@@ -71,7 +72,7 @@ public class Scenario_OTP extends Base_class {
 
 		obj_OTP.Band_pair_screen();
 	}
-	
+*/	
 	
 	/*
 

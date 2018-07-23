@@ -4,6 +4,7 @@ import static org.testng.Assert.assertTrue;
 
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 
 import javax.swing.GroupLayout.ParallelGroup;
@@ -65,40 +66,45 @@ public class Scenario_Phonenumber extends Base_class {
 	public void Permission()
 	{
 		Log4j.info("App Permission");
-		obj_phoneno.verify_permission_message();
+		//obj_phoneno.verify_permission_message();
 		obj_phoneno.permission_allow("allow");
 	}
 	@Test(priority=1,description="Testing Phone no screen UI")
 	public void Phoneno_UI()
 	{
-		//androidDriver.hideKeyboard();
+		hidekeyboard();
 		obj_phoneno.check_phoneno_UI();
 	}
 	@Test(priority=2,description="Verifying All toast Messages")
 	public void Phoneno_Toast_Messages() throws TesseractException, InterruptedException
 	{		
-		obj_phoneno.verify_toastmessages();
+		//obj_phoneno.verify_toastmessages();
 	}
 	@Test(priority=3,description="Verify the country field")
 	public void Verify_Country_UI()
 	{
-		obj_phoneno.verify_country_UI();
+		//obj_phoneno.verify_country_UI();
 	}
 	@Test(priority=4)
 	public void Verify_TermPDF()
 	{
-		obj_phoneno.TermPDF_check();
+		//obj_phoneno.TermPDF_check();
 	}
+	
 	@Test(priority=5)
-	public void Moveto_OTP()
+	public void Moveto_OTP() throws Exception
 	{
-		obj_phoneno.Moveto_OTP("7735912808");
+		//obj_phoneno.Moveto_OTP("7735912808");
+		
+		
+		obj_phoneno.signin_no_validation();
 	}
-	@Test(priority=6)
+	/*@Test(priority=6)
 	public void No_Verify_screen()
 	{
-		obj_phoneno.confirm_no_screen("7735912808");
-	}
+	//	obj_phoneno.confirm_no_screen("7735912808");
+	}*/
+	
 	
 		
 /*@Test(enabled=false)

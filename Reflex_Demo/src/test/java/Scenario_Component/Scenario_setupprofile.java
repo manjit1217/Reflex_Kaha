@@ -22,7 +22,7 @@ public class Scenario_setupprofile extends Base_class {
 	
 	
 	
-	@BeforeSuite
+	/*@BeforeSuite
 	void start()
 	{
 		startServer();
@@ -32,7 +32,7 @@ public class Scenario_setupprofile extends Base_class {
 	{		
 	specificscreen();
 		
-	}
+	}*/
 	
 	
 	
@@ -56,13 +56,18 @@ public class Scenario_setupprofile extends Base_class {
 		
 	}*/
 	
-	@Test(priority=13)
-	void profile_UI() throws InterruptedException
+	/*@Test(priority=13)
+	void Signup_profile_UI() throws InterruptedException
 	{
 		Thread.sleep(5000);
 		explicitywait(PageObject_setupprofile.sign_up_email, 50);
 		PageObject_setupprofile obj = new PageObject_setupprofile(androidDriver);
 		obj.Signup_profile_UI();
+	}*/
+	@Test(priority=13)
+	void cameraui() {
+		//PageObject_setupprofile obj = new PageObject_setupprofile(androidDriver);
+		//obj.addphotolist();
 	}
 	
 	/*@Test(priority=14)
@@ -75,17 +80,14 @@ public class Scenario_setupprofile extends Base_class {
 	void input_setup_profile()
 	{
 		PageObject_setupprofile obj = new PageObject_setupprofile(androidDriver);
-
 		obj.input_setup_profile();
 	}
 	
 	
-	@Test(priority=20)
+	/*@Test(priority=20)
 	void verifyname()
 	{
-	
 	Assert.assertEquals("Manjit",PageObject_setupprofile.sign_up_name.getText());
-		
 	}
 	@Test(priority=21)
 	void verifyemail()
@@ -105,6 +107,6 @@ public class Scenario_setupprofile extends Base_class {
 		obj3.signup_done();
 		Thread.sleep(5000);
 	}
-	
+*/	
 		
 }

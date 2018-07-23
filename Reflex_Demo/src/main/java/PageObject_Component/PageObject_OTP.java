@@ -70,6 +70,12 @@ public class PageObject_OTP extends Base_class {
 			"")
 	public static WebElement Band1;
 	
+	@FindBy(id="com.isport.fastrack:id/list_view")
+	public static String Band_list;
+	
+	@FindBy(id="com.isport.fastrack:id/list_view")
+	public static WebElement FastBand_list;
+	
 	@FindBy(id="com.isport.fastrack:id/next")
 	public static WebElement next;
 	
@@ -187,7 +193,6 @@ public class PageObject_OTP extends Base_class {
 		Refresh_scan.isDisplayed();
 		Refresh_scan.click();
 		explicitywait(Band1, 50);
-				
 	}
 	public void Band_pair_screen()
 	{

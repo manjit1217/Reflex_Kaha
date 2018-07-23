@@ -16,8 +16,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.testng.asserts.SoftAssert;
 
 import Generic_Component.Base_class;
+import Generic_Component.Log4j;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 
@@ -58,7 +60,7 @@ public class PageObject_setupprofile extends Base_class {
 	
 	
 	@FindBy(id="android:id/select_dialog_listview")
-	public String select_dialog_listview;
+	public WebElement select_dialog_listview;
 	
 	
 //Name UI
@@ -134,6 +136,8 @@ public class PageObject_setupprofile extends Base_class {
 	
 	@FindBy(id="com.isport.fastrack:id/user_height")
 	public static WebElement user_height;
+	@FindBy(id="com.isport.fastrack:id/save_button")
+	public static WebElement height_weight_save;
 	@FindBy(id="com.isport.fastrack:id/user_weight")
 	public WebElement user_weight;
 	
@@ -156,13 +160,30 @@ public class PageObject_setupprofile extends Base_class {
 		scrollDown();
 		soft.assertEquals(height_field.getText(), "HEIGHT");
 		soft.assertEquals(weight_field.getText(), "WEIGHT");
+		soft.assertAll();
 	}
 
-	/*
-	public void signup_camera_Addphoto_UI()
+	public void addphotolist()
+	{
+		Signup_camera.click();
+		explicitywait(addphoto_title, 50);
+		
+		//WebElement ulElement = driver.findElement(By.className("android.widget.ListView"));
+	    List listOfPlayers = driver.findElements(By.id("android:id/select_dialog_listview"));
+	   // String x = listOfPlayers.get(0).getText();
+		//List<MobileElement> camera_list = androidDriver.findElements(By.className("android.widget.ListView"));
+		System.out.println(listOfPlayers);
+		System.out.println("hello");
+		
+		
+	}
+	
+	/*public void signup_camera_Addphoto_UI()
 
 	{
-		 List<WebElement> camera_list = androidDriver.findElements(By.id(select_dialog_listview));
+		Signup_profile_pic.click();
+		explicitywait(select_dialog_listview, 60);
+		Log4j.info(camera_list.get(0).getText());
 		Signup_profile_pic.isDisplayed();
 		Signup_profile_pic.click();
 		//explicitywait(select_dialog_listview, 50);
@@ -178,7 +199,7 @@ public class PageObject_setupprofile extends Base_class {
 	{
 		//explicitywait(sign_in_camera, 50);
 		Signup_profile_pic.click();
-	//	camera_list.get(0).click();
+		takephoto.click();
 		touch_action(50, 50);
 		right_afterphoot.click();
 		crop_image.click();
@@ -218,10 +239,12 @@ public class PageObject_setupprofile extends Base_class {
 		
 	}
 	
-	public void hight_weight(String h,String w)
+	public void hight_weight()
 	{
-		user_height.sendKeys(h);
-		user_weight.sendKeys(w);
+		user_height.click();
+		height_weight_save.click();
+		user_weight.click();
+		height_weight_save.click();
 
 	}
 	public void touch()
@@ -258,8 +281,7 @@ public class PageObject_setupprofile extends Base_class {
 		selectgender("Female");
 		dob();
 		scrollDown();
-		hight_weight("155","50");
-		androidDriver.hideKeyboard();
+		hight_weight();
 		
 	}
 	

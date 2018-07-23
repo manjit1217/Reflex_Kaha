@@ -3,8 +3,10 @@ package PageObject_Component;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -251,15 +253,24 @@ public class PageObject_phonenumber extends Base_class {
 	{
 		
 		phoneno_field(no);
-		valid_submit_btn();
-		/*if(checkbox_terms.isSelected())
+		//gfhg
+		//valid_submit_btn();
+		//checkbox_term();//need to remove
+		//checkbox_term();
+		String x = checkbox_terms.getAttribute("checked");
+		
+		System.out.println(x);
+		if(x.contains("t"))
 		{
+		//	System.out.println("Checked");
 		valid_submit_btn();
 		}
 		else {
+			System.out.println("not checked");
 			checkbox_term();
 			valid_submit_btn();
-		}*/
+			}
+		dialog_yes_button();
 		//confirm_no(no);
 	}
 	public void confirm_no_screen(String no)
@@ -268,7 +279,7 @@ public class PageObject_phonenumber extends Base_class {
 		dialog_no_button.isDisplayed();
 		dialog_yes_button.isDisplayed();
 		dialog_no_button.click();
-		//androidDriver.hideKeyboard();
+		hidekeyboard();
 		valid_submit_btn();
 		dialog_yes_button.click();
 	}
@@ -310,6 +321,22 @@ public class PageObject_phonenumber extends Base_class {
 	{
 		explicitywait(dialog_yes_button, 50);
 		dialog_yes_button.click();
-		Log4j.info("hII");
+		//Log4j.info("hII");
+	}
+	public void signin_no_validation() throws InvocationTargetException
+	{
+		PageObject_OTP obj = new PageObject_OTP(androidDriver);
+		Moveto_OTP("7735912808");
+//		dialog_yes_button();
+		hidekeyboard();
+		obj.phone_verify_code.sendKeys("912808");
+		hidekeyboard();
+		obj.phone_verification_submit.click();
+		explicitywait(obj.ok_button, 50);
+		obj.ok_button.click();
+		//obj.Band1.click();
+		explicitywait(obj.Band1, 60);
+		obj.Band1.click();
+		obj.next_btn();
 	}
 }

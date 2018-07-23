@@ -118,8 +118,7 @@ public class Base_class {
 	
 	public void uninstall_app()
 
-		{
-			
+		{		
 			androidDriver.removeApp("com.isport.fastrack");
 			System.out.println("uninstall");
 			
@@ -199,6 +198,16 @@ public class Base_class {
 		androidDriver.launchApp();
 	 }
 
+	 public void hidekeyboard()
+	 {
+		 try {
+		 androidDriver.hideKeyboard();
+	 }
+		 catch(Exception e){
+			 System.out.println(e);
+		 }
+	 }
+	 
 	 
 	 
 /*	 public void if_appinstalled()
