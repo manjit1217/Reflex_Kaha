@@ -21,10 +21,8 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import Generic_Component.Base_class;
-import Generic_Component.Database;
 import Generic_Component.Log4j;
 import Generic_Component.Screenshoot_Class;
-import Generic_Component.Utility_Class;
 import PageObject_Component.PageObject_OTP;
 import PageObject_Component.PageObject_phonenumber;
 import PageObject_Component.PageObject_setupprofile;
@@ -49,6 +47,7 @@ public class Scenario_Phonenumber extends Base_class {
 	{
 		//Database obj = new Database();
 		//Database.database();
+		
 		startServer();
 		obj_phoneno = new PageObject_phonenumber(androidDriver) ;
 		Log4j.info("SERVER START--log");

@@ -80,7 +80,7 @@ public class Base_class {
 	    capabilities.setCapability("deviceName","ZY222ZVH7G");
 	    //capabilities.setCapability("avd","LKAndroidEmulator");
 	    //capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "LKAndroidEmulator");
-	    capabilities.setCapability("app","/Users/lenovo/eclipse-workspace/Reflex_Demo/src/APk/Reflex_V_67_3.0.2.apk");
+	    capabilities.setCapability("app","/Users/lenovo/eclipse-workspace/Reflex_Demo/src/APk/base.apk");
 	    capabilities.setCapability("newCommandTimeout", 600);
 	    capabilities.setCapability(MobileCapabilityType.TAKES_SCREENSHOT, true);
 		androidDriver = new AndroidDriver<MobileElement>(remote_grid, capabilities);    

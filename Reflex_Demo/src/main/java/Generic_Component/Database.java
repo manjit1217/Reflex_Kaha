@@ -1,4 +1,4 @@
-package Generic_Component;
+/*package Generic_Component;
 
 	
 import  java.sql.Connection;		
@@ -51,3 +51,4 @@ public class Database extends Base_class {
 	
 	
 	
+*/
