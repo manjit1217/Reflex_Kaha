@@ -6,6 +6,7 @@ import static org.testng.Assert.assertTrue;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
+import java.sql.SQLException;
 
 import javax.swing.GroupLayout.ParallelGroup;
 
@@ -20,6 +21,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import Generic_Component.Base_class;
+import Generic_Component.Database;
 import Generic_Component.Log4j;
 import Generic_Component.Screenshoot_Class;
 import Generic_Component.Utility_Class;
@@ -43,8 +45,10 @@ public class Scenario_Phonenumber extends Base_class {
 	
 		
 	@BeforeSuite
-	void start()
+	void start() throws ClassNotFoundException, SQLException
 	{
+		//Database obj = new Database();
+		//Database.database();
 		startServer();
 		obj_phoneno = new PageObject_phonenumber(androidDriver) ;
 		Log4j.info("SERVER START--log");
@@ -62,48 +66,42 @@ public class Scenario_Phonenumber extends Base_class {
 	}
 	
 	
-	@Test(priority=0)
+	@Test(priority=0,groups="PhoneNUmber")
 	public void Permission()
 	{
 		Log4j.info("App Permission");
-		//obj_phoneno.verify_permission_message();
+		obj_phoneno.verify_permission_message();
 		obj_phoneno.permission_allow("allow");
 	}
-	@Test(priority=1,description="Testing Phone no screen UI")
+	@Test(priority=1,groups="PhoneNUmber")
 	public void Phoneno_UI()
 	{
 		hidekeyboard();
 		obj_phoneno.check_phoneno_UI();
 	}
-	@Test(priority=2,description="Verifying All toast Messages")
+	@Test(priority=2,groups="PhoneNUmber")
 	public void Phoneno_Toast_Messages() throws TesseractException, InterruptedException
 	{		
-		//obj_phoneno.verify_toastmessages();
+		obj_phoneno.verify_toastmessages();
 	}
 	@Test(priority=3,description="Verify the country field")
 	public void Verify_Country_UI()
 	{
-		//obj_phoneno.verify_country_UI();
+		obj_phoneno.verify_country_UI();
 	}
 	@Test(priority=4)
 	public void Verify_TermPDF()
 	{
-		//obj_phoneno.TermPDF_check();
+		obj_phoneno.TermPDF_check();
 	}
 	
 	@Test(priority=5)
 	public void Moveto_OTP() throws Exception
 	{
-		//obj_phoneno.Moveto_OTP("7735912808");
-		
-		
-		obj_phoneno.signin_no_validation();
+		obj_phoneno.Moveto_OTP("7735912808");
+		//obj_phoneno.signin_no_validation();
 	}
-	/*@Test(priority=6)
-	public void No_Verify_screen()
-	{
-	//	obj_phoneno.confirm_no_screen("7735912808");
-	}*/
+	
 	
 	
 		

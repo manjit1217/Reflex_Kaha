@@ -17,6 +17,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebElement;
@@ -76,8 +77,10 @@ public class Base_class {
 		URL remote_grid = new URL("http://127.0.0.1:4727/wd/hub");
 			
 		capabilities.setCapability("platformName","Android");
-	    capabilities.setCapability("deviceName","FA7A51A01792");
-	    capabilities.setCapability("app","/Users/lenovo/eclipse-workspace/Reflex_Demo/src/APk/Reflex_QA.apk");
+	    capabilities.setCapability("deviceName","ZY222ZVH7G");
+	    //capabilities.setCapability("avd","LKAndroidEmulator");
+	    //capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "LKAndroidEmulator");
+	    capabilities.setCapability("app","/Users/lenovo/eclipse-workspace/Reflex_Demo/src/APk/Reflex_V_67_3.0.2.apk");
 	    capabilities.setCapability("newCommandTimeout", 600);
 	    capabilities.setCapability(MobileCapabilityType.TAKES_SCREENSHOT, true);
 		androidDriver = new AndroidDriver<MobileElement>(remote_grid, capabilities);    
@@ -179,6 +182,23 @@ public class Base_class {
 		private void scroll(int fromX, int fromY, int toX, int toY) {
 		TouchAction touchAction = new TouchAction(androidDriver);
 		touchAction.longPress(fromX, fromY).moveTo(toX, toY).release().perform();
+		}
+		
+		public void scrollup()
+		{
+			//if pressX was zero it didn't work for me
+			int pressX = androidDriver.manage().window().getSize().width / 2;
+			// 4/5 of the screen as the bottom finger-press point
+			int bottomY = androidDriver.manage().window().getSize().height * 1/5;
+			// just non zero point, as it didn't scroll to zero normally
+			int topY = androidDriver.manage().window().getSize().height  / 2;
+			System.out.println("hii");
+			//scroll with TouchAction by itself
+			scroll1(pressX, bottomY, pressX, topY);
+			}
+			private void scroll1(int fromX, int fromY, int toX, int toY) {
+			TouchAction touchAction = new TouchAction(androidDriver);
+			touchAction.longPress(fromX, fromY).moveTo(toX, toY).release().perform();
 		}
 	
 	 public void touch_action(int xPoint,int yPoint)

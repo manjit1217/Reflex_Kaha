@@ -153,6 +153,7 @@ public class PageObject_setupprofile extends Base_class {
 		Signup_profile_pic.isDisplayed();
 		Signup_camera.isDisplayed();
 		profile_back.isDisplayed();
+		signup_save_btn.isDisplayed();
 		SoftAssert soft=new SoftAssert();
 		soft.assertEquals(Name_field.getText(), "NAME");
 		soft.assertEquals(Email_Field.getText(), "EMAIL");
@@ -160,15 +161,17 @@ public class PageObject_setupprofile extends Base_class {
 		scrollDown();
 		soft.assertEquals(height_field.getText(), "HEIGHT");
 		soft.assertEquals(weight_field.getText(), "WEIGHT");
+		scrollup();
 		soft.assertAll();
+		
 	}
 
 	public void addphotolist()
 	{
+		
 		Signup_camera.click();
 		explicitywait(addphoto_title, 50);
-		
-		//WebElement ulElement = driver.findElement(By.className("android.widget.ListView"));
+				//WebElement ulElement = driver.findElement(By.className("android.widget.ListView"));
 	    List listOfPlayers = driver.findElements(By.id("android:id/select_dialog_listview"));
 	   // String x = listOfPlayers.get(0).getText();
 		//List<MobileElement> camera_list = androidDriver.findElements(By.className("android.widget.ListView"));
@@ -200,8 +203,10 @@ public class PageObject_setupprofile extends Base_class {
 		//explicitywait(sign_in_camera, 50);
 		Signup_profile_pic.click();
 		takephoto.click();
-		touch_action(50, 50);
+		touch_action(52, 50);
+		explicitywait(right_afterphoot, 50);
 		right_afterphoot.click();
+		explicitywait(crop_image, 50);
 		crop_image.click();
 	}
 	
@@ -215,9 +220,7 @@ public class PageObject_setupprofile extends Base_class {
 	{
 		sign_up_email.sendKeys(Email);
 	}
-	
-	
-	
+		
 	public void selectgender(String x)
 	{
 		if(x=="male")
@@ -275,13 +278,14 @@ public class PageObject_setupprofile extends Base_class {
 		Profile_camera_take_PIC();
 		explicitywait(signup_save_btn, 40);
 		sign_up_name("Manjit");
-		androidDriver.hideKeyboard();	
+		hidekeyboard();
 		sign_up_email("Manjit.1217@gmail.com");
-		androidDriver.hideKeyboard();
+		hidekeyboard();
 		selectgender("Female");
 		dob();
 		scrollDown();
 		hight_weight();
+		signup_save_btn.click();
 		
 	}
 	

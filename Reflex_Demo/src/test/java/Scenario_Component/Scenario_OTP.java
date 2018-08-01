@@ -3,6 +3,8 @@ package Scenario_Component;
 import static org.testng.Assert.assertTrue;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.net.MalformedURLException;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
@@ -18,16 +20,8 @@ import net.sourceforge.tess4j.TesseractException;
 
 public class Scenario_OTP extends Base_class {
 	
-	//private static PageObject_OTP obj_OTP; 
-	
-	
-	/*@BeforeSuite
-	void start()
-	{
-		startServer();
-	}*/
-	
-	/*@Test(priority=6)
+
+	@Test(priority=6)
 	void Verify_OTP_UI()
 	{
 		PageObject_OTP obj_OTP=new PageObject_OTP(androidDriver);
@@ -48,7 +42,7 @@ public class Scenario_OTP extends Base_class {
 
 		obj_OTP.verify_retry_button_Success();
 	}
-	@Test(priority=10)
+	@Test(priority=9)
 	void band_turned_on_UI()
 	{
 		PageObject_OTP obj_OTP=new PageObject_OTP(androidDriver);
@@ -56,23 +50,23 @@ public class Scenario_OTP extends Base_class {
 		obj_OTP.band_turned_on_UI();
 		obj_OTP.ok_button.click();
 	}
-	@Test(priority=11)
-	void Verify_Band_listscreen()
+	@Test(priority=10)
+	void Verify_Band_listscreen() throws InvocationTargetException
 	{
 		PageObject_OTP obj_OTP=new PageObject_OTP(androidDriver);
-
+		explicitywait(obj_OTP.Band1, 100);
 		obj_OTP.band_list_screen_UI();
-		obj_OTP.Band1.click();
-		
+		obj_OTP.Band1.click();	
 	}
-	@Test(priority=12)
+	@Test(priority=11)
 	void Verify_Band_cnnected()
 	{
+		
 		PageObject_OTP obj_OTP=new PageObject_OTP(androidDriver);
 
 		obj_OTP.Band_pair_screen();
 	}
-*/	
+
 	
 	/*
 

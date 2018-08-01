@@ -1,4 +1,4 @@
-/*package Scenario_Component;
+package Scenario_Component;
 
 import static org.testng.Assert.assertEquals;
 
@@ -12,33 +12,27 @@ import PageObject_Component.PageObject_Dashboard;
 public class Scenario_Dashboard extends Base_class {
 
 	
-	@Test
-	public void dashboardscreen() throws MalformedURLException, InterruptedException
-	{
-		startServer();
-		specificscreen();
-	}
 	
 	
-	@Test(priority=24)
-	public void logo()
+	@Test(priority=15)
+	public void dashboard_UI()
 	{
 		PageObject_Dashboard obj1=new PageObject_Dashboard(androidDriver);
-		
-		PageObject_Dashboard.logo();
+		obj1.All_UI_dashboard();
 	}
 	
-	@Test(priority=25)
+	@Test(priority=16)
 	public void dashboard_BT()
 	{
-		//PageObject_Dashboard obj1=new PageObject_Dashboard(androidDriver);
-		PageObject_Dashboard.dashboard_BT();
+		PageObject_Dashboard obj1=new PageObject_Dashboard(androidDriver);
+		obj1.dashboard_BT();
 	}
-	@Test(priority=26)
+	
+	
+	@Test(priority=17)
 	public void steps_cal_km()
 	{
 		//PageObject_Dashboard obj1=new PageObject_Dashboard(androidDriver);
 		PageObject_Dashboard.step_cal_km();
 	}
 }
-*/

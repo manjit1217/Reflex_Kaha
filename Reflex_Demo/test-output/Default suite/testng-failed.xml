@@ -3,10 +3,19 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
+      <class name="Scenario_Component.Scenario_OTP">
+        <methods>
+          <include name="Verify_OTP_UI"/>
+        </methods>
+      </class> <!-- Scenario_Component.Scenario_OTP -->
       <class name="Scenario_Component.Scenario_Phonenumber">
         <methods>
           <include name="uninstall"/>
           <include name="Moveto_OTP"/>
+          <include name="Verify_Country_UI"/>
+          <include name="Verify_TermPDF"/>
+          <include name="Permission"/>
+          <include name="Phoneno_Toast_Messages"/>
           <include name="initapp"/>
           <include name="Phoneno_UI"/>
           <include name="start"/>

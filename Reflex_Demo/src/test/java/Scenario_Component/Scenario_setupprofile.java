@@ -1,6 +1,7 @@
 package Scenario_Component;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 import org.apache.log4j.Priority;
 import org.testng.Assert;
@@ -22,21 +23,7 @@ public class Scenario_setupprofile extends Base_class {
 	
 	
 	
-	/*@BeforeSuite
-	void start()
-	{
-		startServer();
-	}
-	@BeforeTest
-	void initapp() throws InterruptedException, IOException
-	{		
-	specificscreen();
-		
-	}*/
-	
-	
-	
-	/*@DataProvider
+		/*@DataProvider
 	public Object[][] loginData(){
 		Object[][] data = new Object[2][2];
 		
@@ -56,31 +43,25 @@ public class Scenario_setupprofile extends Base_class {
 		
 	}*/
 	
-	/*@Test(priority=13)
+	@Test(priority=12)
 	void Signup_profile_UI() throws InterruptedException
 	{
 		Thread.sleep(5000);
 		explicitywait(PageObject_setupprofile.sign_up_email, 50);
 		PageObject_setupprofile obj = new PageObject_setupprofile(androidDriver);
 		obj.Signup_profile_UI();
-	}*/
+	}
 	@Test(priority=13)
 	void cameraui() {
 		//PageObject_setupprofile obj = new PageObject_setupprofile(androidDriver);
-		//obj.addphotolist();
+		//obj.Profile_camera_take_PIC();
 	}
 	
-	/*@Test(priority=14)
-	void camera_UI()
-	{
-		PageObject_setupprofile obj = new PageObject_setupprofile(androidDriver);
-	//	obj.signup_camera_Addphoto_UI();
-	}*/
-	@Test(priority=15)
+	@Test(priority=14)
 	void input_setup_profile()
 	{
 		PageObject_setupprofile obj = new PageObject_setupprofile(androidDriver);
-		obj.input_setup_profile();
+	obj.input_setup_profile();
 	}
 	
 	

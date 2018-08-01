@@ -167,10 +167,10 @@ public class PageObject_phonenumber extends Base_class {
 	}
 	public void verify_toastmessages() throws TesseractException, InterruptedException
 	{
-		/*accept_tc_errortoast();
+		accept_tc_errortoast();
 		phoneno_Blank_toast();
 		phoneno_lessthan10_toast();
-		phoneno_morethan10_toast();*/
+		phoneno_morethan10_toast();
 		SoftAssert soft = new SoftAssert();
 		soft.assertTrue(accept_tc_errortoast().contains("Please accept the terms and conditions"),"term is wrong");
 		soft.assertTrue(phoneno_Blank_toast().contains("Please enter a valid phone number"),"Phone no Blank error");
@@ -253,10 +253,6 @@ public class PageObject_phonenumber extends Base_class {
 	{
 		
 		phoneno_field(no);
-		//gfhg
-		//valid_submit_btn();
-		//checkbox_term();//need to remove
-		//checkbox_term();
 		String x = checkbox_terms.getAttribute("checked");
 		
 		System.out.println(x);
@@ -270,11 +266,12 @@ public class PageObject_phonenumber extends Base_class {
 			checkbox_term();
 			valid_submit_btn();
 			}
-		dialog_yes_button();
-		//confirm_no(no);
+		
+		confirm_no_screen(no);
 	}
 	public void confirm_no_screen(String no)
 	{
+		explicitywait(dialog_message_tv, 50);
 		assertEquals("Mobile number entered is +91"+no+". Continue?",dialog_message_tv.getText() );
 		dialog_no_button.isDisplayed();
 		dialog_yes_button.isDisplayed();
@@ -326,6 +323,7 @@ public class PageObject_phonenumber extends Base_class {
 	public void signin_no_validation() throws InvocationTargetException
 	{
 		PageObject_OTP obj = new PageObject_OTP(androidDriver);
+		permission_allow("Yes");
 		Moveto_OTP("7735912808");
 //		dialog_yes_button();
 		hidekeyboard();
@@ -339,4 +337,5 @@ public class PageObject_phonenumber extends Base_class {
 		obj.Band1.click();
 		obj.next_btn();
 	}
+	
 }

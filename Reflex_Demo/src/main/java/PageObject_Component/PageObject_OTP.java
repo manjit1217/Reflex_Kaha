@@ -1,7 +1,11 @@
 package PageObject_Component;
+
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -10,7 +14,9 @@ import org.testng.asserts.SoftAssert;
 import Generic_Component.Base_class;
 import Generic_Component.Screenshoot_Class;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import net.sourceforge.tess4j.TesseractException;
+
 public class PageObject_OTP extends Base_class {
 	
 	
@@ -75,6 +81,11 @@ public class PageObject_OTP extends Base_class {
 	
 	@FindBy(id="com.isport.fastrack:id/list_view")
 	public static WebElement FastBand_list;
+	
+	@FindBy(xpath="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout"
+			+ "/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout"
+			+ "/android.widget.RelativeLayout/android.widget.ListView")
+	public static WebElement band_xpath_list;
 	
 	@FindBy(id="com.isport.fastrack:id/next")
 	public static WebElement next;
@@ -143,9 +154,10 @@ public class PageObject_OTP extends Base_class {
 		PageObject_phonenumber.checkbox_term();
 		PageObject_phonenumber.valid_submit_btn();
 		PageObject_phonenumber.dialog_yes_button();
-		System.out.println("Enter OTP");
+		//System.out.println("Enter OTP");
 		Thread.sleep(3000);
 		phone_verify_code.sendKeys("912808");
+		hidekeyboard();
 		phone_verification_submit.click();
 		
 		/*String x= phone_verify_code.getText();
@@ -165,10 +177,9 @@ public class PageObject_OTP extends Base_class {
 		dialog_no_profile.isDisplayed();
 	}
 	
-//	String text=dialog_message_tv.getText();
-	/*
 	public void delete_existing_profile()
 	{
+		String text=dialog_message_tv.getText();
 		if(text.contains("already registered"))
 		{
 			explicitywait(dialog_no_profile, 50);
@@ -176,11 +187,12 @@ public class PageObject_OTP extends Base_class {
 			explicitywait(remove_profile, 50);
 			remove_profile.click();
 		}
-	}*/
+	}
 	
 	public void band_turned_on_UI()
 	{
 		//please add to very the above desc
+		explicitywait(banddisplayimage, 50);
 		banddisplayimage.isDisplayed();
 		ok_button.isDisplayed();
 		
@@ -192,7 +204,36 @@ public class PageObject_OTP extends Base_class {
 		pair_image_container.isDisplayed();
 		Refresh_scan.isDisplayed();
 		Refresh_scan.click();
+		explicitywait(FastBand_list, 50);
 		explicitywait(Band1, 50);
+				
+				
+		/*By mySelector = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.ListView");
+		List<WebElement> myElements = driver.findElements(mySelector);
+		int count = 0;
+		for(WebElement e : myElements) {
+
+		    count++;
+		    String str1="3";
+			if(e.getText().equals(str1)) {
+		        System.out.println(count); //This will give the index value
+		    }
+		    else{
+		        //do something else
+		    }
+		}*/
+		/*
+		List<WebElement> bandlist = driver.findElements(By.id("com.isport.fastrack:id/list_view"));
+		System.out.println(Band_list);
+		int y = bandlist.size();
+		
+		if(y>0)
+		{
+			System.out.println(y+"band list zxvf");
+		}
+		else {
+			System.out.println();
+		}*/
 	}
 	public void Band_pair_screen()
 	{
@@ -242,7 +283,7 @@ public class PageObject_OTP extends Base_class {
 	
 	public void First_Time_login_movetosetup()
 	{
-	//	delete_existing_profile();
+	//\	delete_existing_profile();
 		ok_button.click();
 		
 	}
